@@ -1,3 +1,5 @@
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/mapcraftercore")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/tools")
