@@ -87,7 +87,7 @@ static const Biome BIOMES[] = {
 	{"minecraft:snowy_plains", 0.8, 0.4},
 	{"minecraft:ice_spikes", 0.8, 0.4},
 	{"minecraft:desert", 2.0, 0.0},
-	{"minecraft:swamp", 0.8, 0.9, rgba(0x6a, 0x70, 0x39, 0xff), rgba(0x6a, 0x70, 0x39, 0xff), rgba(0x61, 0x7B, 0x64, 0xff), true},
+	{"minecraft:swamp", 0.8, 0.9, default_grass, rgba(0x6a, 0x70, 0x39, 0xff), rgba(0x61, 0x7B, 0x64, 0xff), true},
 	{"minecraft:forest", 0.6, 0.6},
 	{"minecraft:flower_forest", 0.6, 0.6},
 	{"minecraft:birch_forest", 0.7, 0.8},
@@ -144,6 +144,9 @@ static const Biome BIOMES[] = {
 	{"minecraft:end_midlands", 0.5, 0.5},
 	{"minecraft:small_end_islands", 0.5, 0.5},
 	{"minecraft:end_barrens", 0.5, 0.5},
+
+	{"minecraft:deep_dark", 0.8, 0.4},
+	{"minecraft:mangrove_swamp", 0.8, 0.9, default_grass, rgba(0x8D, 0xB1, 0x27, 0xff), rgba(0x3A, 0x7A, 0x6A, 0xff), true},
 };
 
 static const std::size_t BIOMES_SIZE = sizeof(BIOMES) / sizeof(Biome);
