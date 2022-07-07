@@ -300,16 +300,13 @@ uint16_t Chunk::getBlockID(const LocalBlockPos& pos, bool force) const {
 	if (!cs)
 		return nop_id;
 
-	int x = pos.x;
-	int z = pos.z;
-
 	// check whether this block is really rendered
-	if (!checkBlockWorldCrop(x, z, pos.y))
+	if (checkBlockWorldCrop(pos.x, pos.z, pos.y)!=0)
 		return nop_id;
 
 	// calculate the offset and get the block ID
 	// and don't forget the add data
-	int offset = ((pos.y & 15) * 256) + (z * 16) + x;
+	int offset = ((pos.y & 15) * 256) + (pos.z * 16) + pos.x;
 	uint16_t id = cs->block_ids[offset];
 	if (!force && world_crop.hasBlockMask()) {
 		const BlockMask* mask = world_crop.getBlockMask();
@@ -318,54 +315,48 @@ uint16_t Chunk::getBlockID(const LocalBlockPos& pos, bool force) const {
 			return nop_id;
 		else if (block_state == BlockMask::BlockState::COMPLETELY_SHOWN)
 			return id;
-		if (mask->isHidden(id, 0 /*getBlockData(pos, true)*/))
+		if (mask->isHidden(id, 0))
 			return nop_id;
 	}
 	return id;
 }
 
-bool Chunk::checkBlockWorldCrop(int x, int z, int y) const {
+int Chunk::checkBlockWorldCrop(int x, int z, int y) const {
 	// now about the actual world cropping:
 	// get the global position of the block
 	BlockPos global_pos = LocalBlockPos(x, z, y).toGlobalPos(chunkpos);
 	// check whether the block is contained in the y-bounds.
 	if (!world_crop.isBlockContainedY(global_pos))
-		return false;
+		return 1;
 	// only check x/z-bounds if the chunk is not completely contained
 	if (!chunk_completely_contained && !world_crop.isBlockContainedXZ(global_pos))
-		return false;
-	return true;
+		return 2;
+	return 0;
 }
 
 uint8_t Chunk::getData(const LocalBlockPos& pos, int array, bool force) const {
 	const ChunkSection* cs = getSection(pos.y);
 	if (!cs) {
-		 // not existing sections should always have skylight
-		 return array == 1 ? 15 : 0;
+		 // not existing sections top sections should always have skylight
+		 return array == 1 ? (this->sections.size() ? 15 : mc::OUT_OF_WORLD_LIGHT) : 0;
 	}
 
-	int x = pos.x;
-	int z = pos.z;
-
 	// check whether this block is really rendered
-	if (!checkBlockWorldCrop(x, z, pos.y)) {
-		 return array == 1 ? 15 : 0;
+	int crop = checkBlockWorldCrop(pos.x, pos.z, pos.y);
+	switch (crop) {
+		case 0: break;
+		case 1: return array == 1 ? 15 : 0;
+		case 2: return array == 1 ? mc::OUT_OF_WORLD_LIGHT : 0;
 	}
 
 	uint8_t data = 0;
 	// calculate the offset and get the block data
-	int offset = ((pos.y & 15) * 256) + (z * 16) + x;
+	int offset = ((pos.y & 15) * 256) + (pos.z * 16) + pos.x;
 	// handle bottom/top nibble
 	if ((offset % 2) == 0)
 		 data = cs->getArray(array)[offset / 2] & 0xf;
 	else
 		 data = (cs->getArray(array)[offset / 2] >> 4) & 0x0f;
-	if (!force && world_crop.hasBlockMask()) {
-		 const BlockMask* mask = world_crop.getBlockMask();
-		 if (mask->isHidden(getBlockID(pos, true), data)) {
-			  return array == 1 ? 15 : 0;
-		}
-	}
 	return data;
 }
 

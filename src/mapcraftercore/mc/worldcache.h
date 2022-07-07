@@ -37,7 +37,6 @@ class BlockStateRegistry;
  */
 struct Block {
 	Block();
-	Block(const mc::BlockPos& pos, uint16_t id);
 
 	// which block does this data belong to (set by getBlock-method)
 	mc::BlockPos pos;

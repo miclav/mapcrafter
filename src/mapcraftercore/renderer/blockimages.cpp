@@ -761,10 +761,7 @@ void RenderedBlockImages::prepareBlockImages() {
 			if (!block.is_transparent) {
 				block.lighting_type = LightingType::SMOOTH;
 			} else {
-				// if (block.is_full_water || block.is_ice) {
-				// 	block.lighting_type = LightingType::SMOOTH;
-				// } else
-				if (block.is_waterlogged /*&& block.has_water_top*/) {
+				if (block.is_waterlogged) {
 					block.lighting_type = LightingType::SMOOTH_TOP_REMAINING_SIMPLE;
 				} else {
 					block.lighting_type = LightingType::SIMPLE;

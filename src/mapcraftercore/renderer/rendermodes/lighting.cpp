@@ -271,7 +271,7 @@ void LightingRenderMode::doSmoothLight(RGBAImage& image, const BlockImage& block
 	for (int i = 0; i < 3; i++) {
 		if (side_mask[i]) {
 			const BlockImage& block = block_images->getBlockImage(getBlock(pos + dirs[i]).id);
-			under_water[i] = /*block.is_full_water ||*/ block.is_waterlogged;
+			under_water[i] = block.is_waterlogged;
 			side_mask[i] = block.is_empty || block.is_transparent;
 		}
 	}

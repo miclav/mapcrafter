@@ -36,6 +36,7 @@ class BlockStateRegistry;
 const int CHUNK_LOWEST = -4;	// Included
 const int CHUNK_HIGHEST = 20;	// Excluded
 const int Y_CHUNKS_PER_REGION_FILE = 24;	// Number of chunksection in a chunk (to date)
+const int OUT_OF_WORLD_LIGHT = 9;	// Lighting value for shading side of the world
 
 /**
  * A 16x16x16 section of a chunk.
@@ -143,8 +144,12 @@ private:
 	/**
 	 * Checks whether a block is in the cropped
 	 * part of the world and therefore not rendered.
+	 * Returns:
+	 *  0: no crop
+	 *  1: crop top/bottom
+	 *  2: crop west/est/north/east
 	 */
-	bool checkBlockWorldCrop(int x, int z, int y) const;
+	int checkBlockWorldCrop(int x, int z, int y) const;
 
 	/**
 	 * Returns a specific block data (block data value, block light, sky light) at a
