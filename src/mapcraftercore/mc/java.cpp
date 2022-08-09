@@ -117,7 +117,7 @@ double dot(const int* v, double x, double y) {
 double JavaSimplexGenerator::getValue(double x, double y) const {
 	// Once again, have a look at:
 	// http://staffwww.itn.liu.se/~stegu/simplexnoise/SimplexNoise.java
-	
+
 	double s = (x + y) * F2;
 	int i = std::floor(x + s);
 	int j = std::floor(y + s);
@@ -127,7 +127,7 @@ double JavaSimplexGenerator::getValue(double x, double y) const {
 	double Y0 = (double)j - t;
 	double x0 = x - X0;
 	double y0 = y - Y0;
-	
+
 	int i1, j1;
 	if (x0 > y0) {
 		i1 = 1;
@@ -146,7 +146,7 @@ double JavaSimplexGenerator::getValue(double x, double y) const {
 	int gi0 = PERMUTATIONS[ii + PERMUTATIONS[jj]] % 12;
 	int gi1 = PERMUTATIONS[ii + i1 + PERMUTATIONS[jj + j1]] % 12;
 	int gi2 = PERMUTATIONS[ii + 1 + PERMUTATIONS[jj + 1]] % 12;
-	
+
 	double t0 = 0.5 - x0 * x0 - y0 * y0;
 	double n0;
 	if (t0 < 0.0) {

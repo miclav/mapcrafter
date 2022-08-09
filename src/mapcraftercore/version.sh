@@ -5,6 +5,7 @@ version=$(cat ../../VERSION)
 gitversion=""
 if [ -d "../../.git" ]; then
     gitversion=$(git describe)
+	version="$version.$(echo $gitversion | tr "-" " " | awk '{print $2}')"
 fi
 
 cat > version.cpp.tmp <<EOF

@@ -1,19 +1,17 @@
-# Mapcrafter [![Build Status](https://travis-ci.org/mapcrafter/mapcrafter.svg?branch=master)](https://travis-ci.org/mapcrafter/mapcrafter)
+# Mapcrafter [![Build Status](https://travis-ci.org/miclav/mapcrafter.svg?branch=master)](https://travis-ci.org/miclav/mapcrafter)
 
 by Moritz Hilscher *(modified by Michael Lavaire)*
 
-### <img src="https://logos-download.com/wp-content/uploads/2016/09/Docker_logo.png" width=48 alt="docker">  https://hub.docker.com/r/miclav/mapcrafter
+[![dockeri.co](https://dockeri.co/image/miclav/mapcrafter)](https://hub.docker.com/r/miclav/mapcrafter)
 
 Mapcrafter is a high performance Minecraft map renderer written in C++. It renders
 Minecraft worlds to a bunch of tiles (images) which are viewable as a map in any browser
 using Leaflet.js.
 
-<p align="center">
-  <img src="https://i.imgur.com/WyKXrgO.png" alt="Example map">
-</p>
 
 <!-- TOC -->
 
+- [Block status](#block-status)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Example maps](#example-maps)
@@ -26,6 +24,12 @@ using Leaflet.js.
 - [Version history](#version-history)
 
 <!-- /TOC -->
+
+## Block Status
+Featuring blocks up to 1.19.3 and 23w07a
+![](./src/data/blocks/isometric_0_16.png)
+
+![](./docs/mapcrafter.png)
 
 ## Supported Minecraft versions
 
