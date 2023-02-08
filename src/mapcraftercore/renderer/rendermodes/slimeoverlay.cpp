@@ -35,7 +35,8 @@ SlimeOverlay::SlimeOverlay(fs::path world_dir)
 		level_dat.readNBT((world_dir / "level.dat").string().c_str());
 
 		nbt::TagCompound data = level_dat.findTag<nbt::TagCompound>("Data");
-		nbt::TagLong random_seed = data.findTag<nbt::TagLong>("RandomSeed");
+		nbt::TagCompound worldGenSettings = data.findTag<nbt::TagCompound>("WorldGenSettings");
+		nbt::TagLong random_seed = worldGenSettings.findTag<nbt::TagLong>("seed");
 		world_seed = random_seed.payload;
 	} catch (nbt::NBTError& e) {
 		LOG(ERROR) << "Unable to read world seed from level.dat file for slime overlay: " << e.what();

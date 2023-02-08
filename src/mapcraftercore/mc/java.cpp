@@ -30,11 +30,11 @@ JavaRandom::~JavaRandom() {
 }
 
 void JavaRandom::setSeed(long long seed) {
-	this->seed = (seed ^ 0x5EECE66DLL) & ((1LL << 48) - 1);
+	this->seed = (seed ^ 0x5DEECE66DLL) & ((1LL << 48) - 1);
 }
 
 int JavaRandom::next(int bits) {
-	seed = (seed * 0x5EECE66DLL + 0xBLL) & ((1LL << 48) - 1);
+	seed = (seed * 0x5DEECE66DLL + 0xBLL) & ((1LL << 48) - 1);
 	return (int) (seed >> (48 - bits));
 }
 
