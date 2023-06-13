@@ -49,5 +49,5 @@ RUN apk add --no-cache --upgrade \
     shadow
 
 # Entrypoint
-ADD entrypoint.sh /
+ADD entrypoint*.sh /
 ENTRYPOINT ["/entrypoint.sh"]

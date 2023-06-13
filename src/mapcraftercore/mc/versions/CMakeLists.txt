@@ -1,0 +1,13 @@
+set(SOURCE
+    ${SOURCE}
+    "${CMAKE_CURRENT_SOURCE_DIR}/chunk_status.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/data_adaptor.cpp"
+    PARENT_SCOPE
+)
+set(HEADERS
+    ${HEADERS}
+    "${CMAKE_CURRENT_SOURCE_DIR}/chunk_status.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/data_adaptor.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/data_versions.h"
+    PARENT_SCOPE
+)

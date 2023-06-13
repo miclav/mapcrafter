@@ -43,7 +43,7 @@ World::World(std::string world_dir, Dimension dimension, std::string cache_dir)
 
 	// try to find the region directory
 	if (dimension == Dimension::OVERWORLD) {
-		 region_dir = this->world_dir / "region";
+		region_dir = this->world_dir / "region";
 	} else if (dimension == Dimension::NETHER) {
 		// try the extra bukkit nether directory at first, then the normal directory
 		world_name += "_nether";

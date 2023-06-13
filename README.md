@@ -26,7 +26,7 @@ using Leaflet.js.
 <!-- /TOC -->
 
 ## Block Status
-Featuring blocks up to 1.19.3 and 23w07a
+Featuring blocks up to 1.20
 ![](./src/data/blocks/isometric_0_16.png)
 
 ![](./docs/mapcrafter.png)

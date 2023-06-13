@@ -37,8 +37,9 @@ const mc::JavaSimplexGenerator Biome::SWAMP_GRASS_NOISE;
 
 Biome::Biome(std::string name, double temperature, double rainfall, RGBAPixel grass_tint, RGBAPixel foliage_tint, RGBAPixel water_tint, bool swamp_mod, bool forest_mod)
 	:name(name), temperature(temperature), rainfall(rainfall),
-	  grass_tint(grass_tint), foliage_tint(foliage_tint), water_tint(water_tint),
-	  swamp_mod(swamp_mod), forest_mod(forest_mod) {
+		grass_tint(grass_tint), foliage_tint(foliage_tint), water_tint(water_tint)
+	//   ,swamp_mod(swamp_mod), forest_mod(forest_mod)
+{
 }
 
 /**

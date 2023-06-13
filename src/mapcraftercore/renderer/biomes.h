@@ -55,7 +55,7 @@ private:
 	double rainfall;
 
 	RGBAPixel grass_tint, foliage_tint, water_tint;
-	bool swamp_mod, forest_mod;
+	// bool swamp_mod, forest_mod;
 
 	static const mc::JavaSimplexGenerator SWAMP_GRASS_NOISE;
 
@@ -132,6 +132,7 @@ static const Biome BIOMES[] = {
 	{"minecraft:mushroom_fields", 0.9, 1.0},
 	{"minecraft:dripstone_caves", 0.8, 0.4},
 	{"minecraft:lush_caves", 0.5, 0.5},
+	{"minecraft:cherry_grove", 0.5, 0.8, rgba(0xB6, 0xDB, 0x61, 0xff), rgba(0xB6, 0xDB, 0x61, 0xff), rgba(0x5D, 0xB7, 0xEF, 0xff)},
 
 	{"minecraft:nether_wastes", 2.0, 0.0},
 	{"minecraft:warped_forest", 2.0, 0.0},

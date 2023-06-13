@@ -19,6 +19,7 @@
 
 #include "chunk.h"
 #include "blockstate.h"
+#include "versions/data_adaptor.h"
 #include "../renderer/biomes.h"
 #include "../renderer/blockimages.h"
 
@@ -89,7 +90,8 @@ bool Chunk::readNBT(mc::BlockStateRegistry& block_registry, const char* data, si
 	}
 
 	int data_version = nbt.findTag<nbt::TagInt>("DataVersion").payload;
-	if (data_version < 2860){
+	const DataAdaptor& dadap = DataAdaptor::GetVersionAdaptor(data_version);
+	if (!dadap.IsSupported()){
 		LOG(ERROR) << "Chunk error: Unsupported chunk version, please upgrade.";
 		return false;
 	}
@@ -110,9 +112,7 @@ bool Chunk::readNBT(mc::BlockStateRegistry& block_registry, const char* data, si
 
 	if (nbt.hasTag<nbt::TagString>("Status")) {
 		const nbt::TagString& tag = nbt.findTag<nbt::TagString>("Status");
-		// completely generated chunks in fresh 1.13 worlds usually have status 'fullchunk' or 'postprocessed'
-		// however, chunks of converted <1.13 worlds don't use these, but the state 'mobs_spawned'
-		if (!(tag.payload == "fullchunk" || tag.payload == "full" || tag.payload == "postprocessed" || tag.payload == "mobs_spawned")) {
+		if(! dadap.chunkStatus.isFull(tag.payload) ){
 			return true;
 		}
 	}

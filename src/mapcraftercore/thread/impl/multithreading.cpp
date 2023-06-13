@@ -120,13 +120,13 @@ void MultiThreadingDispatcher::dispatch(const renderer::RenderContext& context,
 	if (tiles.size() == 0)
 		return;
 
-	int jobs = 0;
+	// int jobs = 0;
 	for (auto tile_it = tiles.begin(); tile_it != tiles.end(); ++tile_it)
 		if (tile_it->getDepth() == context.tile_set->getDepth() - 2) {
 			renderer::RenderWork work;
 			work.tiles.insert(*tile_it);
 			manager.addWork(work);
-			jobs++;
+			// jobs++;
 		}
 
 	//int render_tiles = context.tile_set->getRequiredRenderTilesCount();
