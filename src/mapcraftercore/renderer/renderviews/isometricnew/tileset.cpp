@@ -70,16 +70,16 @@ void NewIsometricTileSet::mapChunkToTiles(const mc::ChunkPos& chunk,
 			col = + chunk.x + chunk.z;
 			break;
 		case RenderRotation::TOP_RIGHT:
-			row = + chunk.x + chunk.z;
-			col = + chunk.x - chunk.z;
+			row = + chunk.x + (chunk.z - 31);
+			col = + chunk.x - (chunk.z - 31);
 			break;
 		case RenderRotation::BOTTOM_RIGHT:
-			row = + chunk.x - chunk.z;
-			col = - chunk.x - chunk.z;
+			row = + (chunk.x - 31) - (chunk.z - 31);
+			col = - (chunk.x - 31) - (chunk.z - 31);
 			break;
 		case RenderRotation::BOTTOM_LEFT:
-			row = - chunk.x - chunk.z;
-			col = - chunk.x + chunk.z;
+			row = - (chunk.x - 31) - chunk.z;
+			col = - (chunk.x - 31) + chunk.z;
 			break;
 	}
 
