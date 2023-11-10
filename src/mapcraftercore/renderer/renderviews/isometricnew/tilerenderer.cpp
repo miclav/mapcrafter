@@ -51,11 +51,11 @@ mc::ChunkPos TileTopBlockIterator::tile2Pos(int r, int c, const RenderRotation& 
 		case RenderRotation::TOP_LEFT:
 			return mc::ChunkPos((+c - r) / 2, (+c + r) / 2);
 		case RenderRotation::TOP_RIGHT:
-			return mc::ChunkPos((+c + r) / 2, (-c + r) / 2);
+			return mc::ChunkPos((+c + r) / 2, (-c + r) / 2 + 31);
 		case RenderRotation::BOTTOM_RIGHT:
-			return mc::ChunkPos((-c + r) / 2, (-c - r) / 2);
+			return mc::ChunkPos((-c + r) / 2 + 31, (-c - r) / 2 + 31);
 		case RenderRotation::BOTTOM_LEFT:
-			return mc::ChunkPos((-c - r) / 2, (+c - r) / 2);
+			return mc::ChunkPos((-c - r) / 2 + 31, (+c - r) / 2);
 	}
 }
 
