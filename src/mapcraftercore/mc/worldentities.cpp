@@ -283,12 +283,24 @@ std::vector<SignEntity> WorldEntitiesCache::getSigns(WorldCrop world_crop) const
 						|| !world_crop.isBlockContainedY(pos))
 					continue;
 
-				mc::SignEntity::Lines lines = {{
-					entity.findTag<nbt::TagString>("Text1").payload,
-					entity.findTag<nbt::TagString>("Text2").payload,
-					entity.findTag<nbt::TagString>("Text3").payload,
-					entity.findTag<nbt::TagString>("Text4").payload
-				}};
+				mc::SignEntity::Lines lines;
+				// https://minecraft.fandom.com/wiki/Sign#Data_values
+				if (entity.hasTag<nbt::TagString>("Text1")) {
+					// Pre-1.20
+					lines = {{
+						entity.findTag<nbt::TagString>("Text1").payload,
+						entity.findTag<nbt::TagString>("Text2").payload,
+						entity.findTag<nbt::TagString>("Text3").payload,
+						entity.findTag<nbt::TagString>("Text4").payload
+					}};
+				} else {
+					// 1.20 onwards
+					nbt::TagCompound frontText = entity.findTag<nbt::TagCompound>("front_text");
+					nbt::TagList messages = frontText.findTag<nbt::TagList>("messages");
+					for (size_t i = 0; i < 4 && i < messages.payload.size(); i++) {
+						lines[i] = messages.payload[i]->cast<nbt::TagString>().payload;
+					}
+				}
 
 				signs.push_back(mc::SignEntity(pos, lines));
 			}
