@@ -1,10 +1,18 @@
 # Mapcrafter version history
 
+**v.3.1.388**
+
+* Blocks updated (1.20.3-pre2 & 23w46a)
+* Fix UI coordinates (Thanks to @kevinwchang)
+* Fix signs from 1.20 in marker tool (Thanks to @doismellburning)
+
 **v.3.1.328**
-  * 1.19-pre1 blocks included
-  * Blocks updated with a lot of texture mapping issues resolved in a Blockcrafter update
+
+* 1.19-pre1 blocks included
+* Blocks updated with a lot of texture mapping issues resolved in a Blockcrafter update
 
 **v.3.1.323**
+
 * Support for 1.18.x
   * Dockerfile build fixed
   * Entity cache file not saved in world folder anymore. World folder can now be mounted as read only.
@@ -168,7 +176,7 @@
 * Added a way to add more user-defined markers using the Leaflet API (#71)
 * Changed ``markers.js`` file attribute ``icon_size`` to ``iconSize``
   * **You should update your ``markers.js`` file and re-run ``mapcrafter_markers``
-    if you use markers.** 
+    if you use markers.**
 * Fixed a bug causing Mapcrafter not to use the ``data/`` directory as
   resource directory (#70)
 
