@@ -10058,7 +10058,7 @@ minecraft:sea_pickle pickles=3,waterlogged=true color=9027:9029:9031:9033,is_wat
 minecraft:sea_pickle pickles=4,waterlogged=false color=9035:9037:9039:9041,is_waterloggable=true,uv=9036:9038:9040:9042
 minecraft:sea_pickle pickles=4,waterlogged=true color=9043:9045:9047:9049,is_waterloggable=true,uv=9044:9046:9048:9050
 minecraft:seagrass - color=9051,inherently_waterlogged=true,is_waterloggable=true,uv=9052
-minecraft:short_grass - color=4520,uv=4521
+minecraft:short_grass - biome_colormap=#ff55b7be|#ff96b481|#ff33cd49,biome_colors=grass,biome_type=simple,color=4520,uv=4521
 minecraft:shroomlight - color=9053,uv=71
 minecraft:shulker_box facing=down color=9054,uv=71
 minecraft:shulker_box facing=east color=9055,uv=71
