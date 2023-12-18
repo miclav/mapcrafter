@@ -36,6 +36,7 @@ FROM alpine:3.8
 
 # Mapcrafter, built in previous stage
 COPY --from=builder /tmp/mapcrafter/ /
+COPY --from=miclav/mapcrafter-blocks /blocks /usr/local/share/mapcrafter/blocks
 
 # Depedencies needed for running Mapcrafter
 RUN apk add --no-cache --upgrade \
