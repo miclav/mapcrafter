@@ -27,7 +27,6 @@
 #include <array>
 #include <vector>
 #include <boost/filesystem.hpp>
-#include <boost/container/vector.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -53,7 +52,6 @@ struct TileImage {
 	int x, y;
 	RGBAImage image;
 	mc::BlockPos pos;
-	int z_index;
 
 	TileImage() {}
 	TileImage(int width, int height): image(width, height) {}
@@ -75,11 +73,8 @@ public:
 	virtual int getTileHeight() const;
 
 protected:
-	// void sortTiles(boost::container::vector<TileImage>& tile_images) const;
-	typedef bool cmpBlockPos(const TileImage &, const TileImage &);
-	cmpBlockPos* getTileComparator() const;
-	void renderBlocks(int x, int y, mc::BlockPos top, const mc::BlockDir& dir, boost::container::vector<TileImage>& tile_images);
-	virtual void renderTopBlocks(const TilePos& tile_pos, boost::container::vector<TileImage>& tile_images) {}
+	void renderBlocks(int x, int y, mc::BlockPos top, const mc::BlockDir& dir, std::vector<TileImage>& tile_images);
+	virtual void renderTopBlocks(const TilePos& tile_pos, std::vector<TileImage>& tile_images) {}
 
 	mc::Block getBlock(const mc::BlockPos& pos, int get = mc::GET_ID);
 	uint32_t getBiomeColor(const mc::BlockPos& pos, const BlockImage& block, const mc::Chunk* chunk);

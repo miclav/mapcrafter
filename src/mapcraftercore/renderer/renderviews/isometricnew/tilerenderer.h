@@ -90,7 +90,7 @@ public:
 	virtual int getTileSize() const;
 
 protected:
-	virtual void renderTopBlocks(const TilePos& tile_pos, boost::container::vector<TileImage>& tile_images);
+	virtual void renderTopBlocks(const TilePos& tile_pos, std::vector<TileImage>& tile_images);
 };
 
 }

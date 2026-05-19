@@ -183,7 +183,7 @@ int NewIsometricTileRenderer::getTileSize() const {
 	return images->getBlockSize() * 16 * tile_width;
 }
 
-void NewIsometricTileRenderer::renderTopBlocks(const TilePos& tile_pos, boost::container::vector<TileImage>& tile_images) {
+void NewIsometricTileRenderer::renderTopBlocks(const TilePos& tile_pos, std::vector<TileImage>& tile_images) {
 	int block_size = images->getBlockSize();
 	mc::BlockDir dir = render_view->getRotation().rotate(mc::DIR_NORTH + mc::DIR_EAST + mc::DIR_BOTTOM);
 	for (old::TileTopBlockIterator it(tile_pos, block_size, tile_width, render_view); !it.end(); it.next()) {

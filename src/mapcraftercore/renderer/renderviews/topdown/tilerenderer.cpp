@@ -53,7 +53,7 @@ int TopdownTileRenderer::getTileSize() const {
 	return images->getBlockSize() * 16 * tile_width;
 }
 
-void TopdownTileRenderer::renderTopBlocks(const TilePos& tile_pos, boost::container::vector<TileImage>& tile_images) {
+void TopdownTileRenderer::renderTopBlocks(const TilePos& tile_pos, std::vector<TileImage>& tile_images) {
 	int block_size = images->getBlockSize();
 	for (int cx = 0; cx < tile_width; cx++) {
 		for (int cz = 0; cz < tile_width; cz++) {

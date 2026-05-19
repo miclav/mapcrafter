@@ -63,7 +63,7 @@ int SideTileRenderer::getTileHeight() const {
 	return block_images->getBlockHeight() * 8 * tile_width;
 }
 
-void SideTileRenderer::renderTopBlocks(const TilePos& tile_pos, boost::container::vector<TileImage>& tile_images) {
+void SideTileRenderer::renderTopBlocks(const TilePos& tile_pos, std::vector<TileImage>& tile_images) {
 	int block_width = block_images->getBlockWidth();
 	int block_height = block_images->getBlockHeight();
 	for (int cx = 0; cx < tile_width; cx++) {
